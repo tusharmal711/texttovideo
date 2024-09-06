@@ -35,13 +35,20 @@ function generateVideo() {
     mediaRecorder.onstop = () => {
         const blob = new Blob(recordedChunks, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
-        
+
+        // Set up download link
         const downloadLink = document.getElementById('downloadLink');
         downloadLink.href = url;
         downloadLink.download = 'animated-text-video.webm';
         downloadLink.style.display = 'block';
         downloadLink.textContent = 'Download Video';
 
+        // Set up video preview
+        const videoPreview = document.getElementById('videoPreview');
+        videoPreview.src = url;
+        videoPreview.style.display = 'block';
+
+        // Enable buttons
         const previewButton = document.getElementById('previewButton');
         const shareButton = document.getElementById('shareButton');
         previewButton.style.display = 'block';
@@ -75,22 +82,19 @@ function generateVideo() {
     renderFrame();
 }
 
-// Preview the video
+// Preview the video by playing it in an embedded video player
 function previewVideo() {
-    const downloadLink = document.getElementById('downloadLink');
-    const url = downloadLink.href;
-    
-    if (url) {
-        const videoWindow = window.open(url, '_blank');
-        videoWindow.focus();
+    const videoPreview = document.getElementById('videoPreview');
+    if (videoPreview.style.display === 'block') {
+        videoPreview.play();
     }
 }
 
-// Share the video using the Web Share API
+// Share the video using the Web Share API with a fallback option
 function shareVideo() {
     const downloadLink = document.getElementById('downloadLink');
     const url = downloadLink.href;
-    
+
     if (navigator.share && url) {
         navigator.share({
             title: 'Check out this animated text video!',
@@ -101,6 +105,6 @@ function shareVideo() {
             console.error('Error sharing video:', error);
         });
     } else {
-        alert('Sharing is not supported on this browser.');
+        alert('Sharing is not supported on this browser. Please copy the video URL manually.');
     }
 }
