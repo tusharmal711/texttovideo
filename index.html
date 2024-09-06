@@ -14,6 +14,10 @@
         <button onclick="generateVideo()">Generate Video</button>
         <a id="downloadLink" style="display:none;">Download Video</a>
         <canvas id="videoCanvas" width="800" height="600"></canvas>
+        
+        <!-- New Buttons -->
+        <button id="previewButton" style="display:none;" onclick="previewVideo()">Preview Video</button>
+        <button id="shareButton" style="display:none;" onclick="shareVideo()">Share Video</button>
     </div>
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-message">Video is generating, please wait...</div>
