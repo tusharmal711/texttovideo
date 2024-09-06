@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animation Video Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Animation Video Generator</h1>
+        <input type="text" id="userText" placeholder="Enter your text here">
+        <input type="number" id="duration" placeholder="Duration (seconds)" min="1">
+        <button onclick="generateVideo()">Generate Video</button>
+        <a id="downloadLink" style="display:none;">Download Video</a>
+        <canvas id="videoCanvas" width="800" height="600"></canvas>
+    </div>
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-message">Video is generating, please wait...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
