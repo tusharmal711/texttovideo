@@ -13,13 +13,7 @@
         <input type="number" id="duration" placeholder="Duration (seconds)" min="1">
         <button onclick="generateVideo()">Generate Video</button>
         <a id="downloadLink" style="display:none;">Download Video</a>
-
-        <!-- Video Preview Element -->
-        <video id="videoPreview" style="display:none;" controls></video>
-
-        <!-- New Buttons -->
-        <button id="previewButton" style="display:none;" onclick="previewVideo()">Preview Video</button>
-        <button id="shareButton" style="display:none;" onclick="shareVideo()">Share Video</button>
+        <canvas id="videoCanvas" width="800" height="600"></canvas>
     </div>
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-message">Video is generating, please wait...</div>
