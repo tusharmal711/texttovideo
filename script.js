@@ -24,7 +24,7 @@ function generateVideo() {
   const offscreenCtx = offscreenCanvas.getContext('2d');
 
   const stream = canvas.captureStream(fps);
-  const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/mp4' });
+  const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
 
   const recordedChunks = [];
   mediaRecorder.ondataavailable = (event) => {
@@ -34,11 +34,11 @@ function generateVideo() {
   };
 
   mediaRecorder.onstop = () => {
-      const blob = new Blob(recordedChunks, { type: 'video/mp4' });
+      const blob = new Blob(recordedChunks, { type: 'video/webm' });
       const url = URL.createObjectURL(blob);
       const downloadLink = document.getElementById('downloadLink');
       downloadLink.href = url;
-      downloadLink.download = 'animated-text-video.mp4';
+      downloadLink.download = 'animated-text-video.webm';
       downloadLink.style.display = 'block';
       downloadLink.textContent = 'Download Video';
       loadingOverlay.style.display = 'none'; // Hide loading overlay
