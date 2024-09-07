@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Animation Video Generator</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Include FFmpeg.js -->
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+
 </head>
 <body>
     <div class="container">
         <h1>Text Animation Video Generator</h1>
         <input type="text" id="userText" placeholder="Enter your text here">
         <input type="number" id="duration" placeholder="Duration (seconds)" min="1">
+
+        <!-- New color input fields -->
+        <label for="textColor">Choose Text Color: </label>
+        <input type="color" id="textColor" value="#ffffff">
+
+        <label for="bgColor">Choose Background Color (if no image): </label>
+        <input type="color" id="bgColor" value="#000000">
+
+        <!-- File input for uploading background image -->
+        <label for="bgImage">Or Upload Background Image: </label>
+        <input type="file" id="bgImage" accept="image/*">
+
         <button onclick="generateVideo()">Generate Video</button>
         <a id="downloadLink" style="display:none;">Download Video</a>
         <canvas id="videoCanvas" width="800" height="600"></canvas>
