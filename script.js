@@ -29,7 +29,7 @@ function generateVideo() {
     const offscreenCtx = offscreenCanvas.getContext('2d');
 
     const stream = canvas.captureStream(fps);
-    const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/mp4' });
+    const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
 
     const recordedChunks = [];
     mediaRecorder.ondataavailable = (event) => {
@@ -39,11 +39,11 @@ function generateVideo() {
     };
 
     mediaRecorder.onstop = () => {
-        const blob = new Blob(recordedChunks, { type: 'video/mp4' });
+        const blob = new Blob(recordedChunks, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         const downloadLink = document.getElementById('downloadLink');
         downloadLink.href = url;
-        downloadLink.download = 'animated-text-video.mp4'; // MP4 format
+        downloadLink.download = 'animated-text-video.webm'; // WEBM format
         downloadLink.style.display = 'block';
         downloadLink.textContent = 'Download Video';
         loadingOverlay.style.display = 'none'; // Hide loading overlay
@@ -67,6 +67,10 @@ function generateVideo() {
     }
 
     function applyAnimation(ctx, animation, frame, totalFrames) {
+        const progress = frame / totalFrames;
+        const x = width / 2;
+        const y = height / 2;
+
         switch (animation) {
             case 'fadeIn':
                 offscreenCtx.globalAlpha = Math.min(progress, 1);
@@ -142,7 +146,6 @@ function generateVideo() {
                 offscreenCtx.translate(-x, -y);
                 break;
             case 'none':
-            
             default:
                 ctx.globalAlpha = 1;
                 ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transformations
