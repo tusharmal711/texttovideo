@@ -23,6 +23,10 @@
         <label for="bgImage">Or Upload Background Image: </label>
         <input type="file" id="bgImage" accept="image/*">
 
+        <!-- File input for uploading audio -->
+        <label for="audioFile">Upload Audio File: </label>
+        <input type="file" id="audioFile" accept="audio/*">
+
         <!-- New text animation dropdown -->
         <label for="textAnimation">Choose Text Animation: </label>
         <select id="textAnimation">
@@ -47,11 +51,17 @@
 
         <button onclick="generateVideo()">Generate Video</button>
         <a id="downloadLink" style="display:none;">Download Video</a>
+        <a id="refreshLink" style="display:none;" onclick="refresh()">Refresh</a>
         <canvas id="videoCanvas" width="800" height="600"></canvas>
     </div>
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-message">Video is generating, please wait...</div>
     </div>
+    <script>
+        function refresh(){
+            location.assign("index.html");
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

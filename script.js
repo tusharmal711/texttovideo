@@ -42,11 +42,18 @@ function generateVideo() {
         const blob = new Blob(recordedChunks, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         const downloadLink = document.getElementById('downloadLink');
+        const refreshLink = document.getElementById('refreshLink');
         downloadLink.href = url;
         downloadLink.download = 'animated-text-video.webm'; // WEBM format
         downloadLink.style.display = 'block';
+        refreshLink.style.display = 'block';
         downloadLink.textContent = 'Download Video';
         loadingOverlay.style.display = 'none'; // Hide loading overlay
+        if (audioFile) {
+            const audioUrl = URL.createObjectURL(audioFile);
+            const audio = new Audio(audioUrl);
+            audio.play();
+        }
     };
 
     mediaRecorder.start();
