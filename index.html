@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Animation Video Generator</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Include FFmpeg.js -->
-<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
-
 </head>
 <body>
     <div class="container">
@@ -19,12 +16,34 @@
         <label for="textColor">Choose Text Color: </label>
         <input type="color" id="textColor" value="#ffffff">
 
-        <label for="bgColor">Choose Background Color (if no image): </label>
+        <label for="bgColor">Choose Background Color : </label>
         <input type="color" id="bgColor" value="#000000">
-
+    
         <!-- File input for uploading background image -->
         <label for="bgImage">Or Upload Background Image: </label>
         <input type="file" id="bgImage" accept="image/*">
+
+        <!-- New text animation dropdown -->
+        <label for="textAnimation">Choose Text Animation: </label>
+        <select id="textAnimation">
+            <option value="none">None</option>
+            <option value="fadeIn">Fade In</option>
+            <option value="slideIn">Slide In</option>
+            <option value="zoomIn">Zoom In</option>
+            <option value="rotateIn">Rotate In</option>
+            <!-- Add up to 15 options here -->
+            <!-- Example options -->
+            <option value="bounce">Bounce</option>
+            <option value="flash">Flash</option>
+            <option value="pulse">Pulse</option>
+            <option value="rubberBand">Rubber Band</option>
+            <option value="shake">Shake</option>
+            <option value="swing">Swing</option>
+            <option value="tada">Tada</option>
+            <option value="wobble">Wobble</option>
+            <option value="zoomOut">Zoom Out</option>
+            <option value="flipIn">Flip In</option>
+        </select>
 
         <button onclick="generateVideo()">Generate Video</button>
         <a id="downloadLink" style="display:none;">Download Video</a>
