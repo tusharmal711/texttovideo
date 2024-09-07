@@ -49,15 +49,11 @@ function generateVideo() {
         refreshLink.style.display = 'block';
         downloadLink.textContent = 'Download Video';
         loadingOverlay.style.display = 'none'; // Hide loading overlay
-        if (audioFile) {
-            const audioUrl = URL.createObjectURL(audioFile);
-            const audio = new Audio(audioUrl);
-            audio.play();
-        }
+      
     };
 
     mediaRecorder.start();
-
+    
     let frame = 0;
     const bgImageObj = new Image();
 
